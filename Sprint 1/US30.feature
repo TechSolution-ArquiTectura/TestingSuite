@@ -15,4 +15,12 @@ Feature: US030 Realizar pago con MetaMask en la aplicación Cineclub
     When el sistema realiza la conversión del monto total en soles a Ethereum
     Then el usuario debe ver el valor equivalente en Ethereum y las tarifas estimadas en la ventana de MetaMask
 
+  Scenario: Confirmación de Pago en MetaMask
+    Given que el usuario ha revisado los detalles de la transacción en MetaMask
+    When el usuario confirma la transacción
+    Then MetaMask debe procesar la transacción y mostrar una notificación de envío
 
+  Scenario: Verificación de Transacción Exitosa
+    Given que el usuario ha confirmado la transacción en MetaMask
+    When el sistema verifica la transacción en la blockchain
+    Then el sistema debe mostrar un mensaje de "Reserva exitosa" y confirmar la compra de las entradas
